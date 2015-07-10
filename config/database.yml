@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username:
+  password:
+
+development:
+  <<: *default
+  database: chicagofest_development
+
+test: &test
+  <<: *default
+  database: chicagofest_test
+
+# production:
+#   <<: *default
+#   database: chicagofest_production
+#   username: root
+#   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
