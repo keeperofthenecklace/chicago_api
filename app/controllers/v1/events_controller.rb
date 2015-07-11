@@ -26,10 +26,9 @@ module V1
     end
 
     private
-
+      # Mass-assignment using rails strong params.
       def event_params
         params.require(:event).permit(:title, :event_begins_at, :event_ends_at).merge(user: current_user)
       end
-
   end
 end
