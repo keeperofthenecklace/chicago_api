@@ -2,7 +2,7 @@ Given(/^the system knows about the following events:$/) do |events|
   EventApp.data = events.hashes
 end
 
-When(/^the client request GET \/v(\d+)\/events$/) do |path|
+When(/^the client requests GET (.*)$/) do |path|
   get(path)
 end
 

@@ -1,10 +1,10 @@
 #################################################
-# Implementation of simple token authentication
-# module.Token authentication was removed from
+# Implementation of a simple token authentication
+# module. Token authentication was removed from
 # Devise a couple of years ago.
 # The token will be composed of two informations:
-# the user’s id followed by the token itself,
-# separated by a :
+# the user id followed by the token itself,
+# separated by a ':'
 #################################################
 class ApplicationController < ActionController::API
   include ActionController::Serialization
@@ -29,29 +29,29 @@ class ApplicationController < ActionController::API
 
   private
 
-  def authenticate_with_auth_token(auth_token)
-    if !auth_token.include?(':')
-      authentication_error
-      return
+    def authenticate_with_auth_token(auth_token)
+      if !auth_token.include?(':')
+        authentication_error
+        return
+      end
+
+      user_id = auth_token.split(':').first
+      user = User.where(id: user_id).first
+
+      if user && Devise.secure_compare(user.access_token, auth_token)
+        # User can access
+        sign_in user, store: false
+      else
+        authentication_error
+      end
+
     end
 
-    user_id = auth_token.split(':').first
-    user = User.where(id: user_id).first
-
-    if user && Devise.secure_compare(user.access_token, auth_token)
-      # User can access
-      sign_in user, store: false
-    else
-      authentication_error
+    # Authentication Failure
+    # Renders http response code 401.
+    # A users token is invalid.
+    def authentication_error
+      render json: { error: t('unauthorized') }, status: 401 # Authentication time out
     end
-
-  end
-
-  # Authentication Failure
-  # Renders a 401 Error
-  # A users token is invalid.
-  def authentication_error
-    render json: { error: t('unauthorized') }, status: 401 # Authentication time out
-  end
 
 end

@@ -1,7 +1,7 @@
 # Load the event_app file from the support directory.
 # The file inherits from sinatra base class which serve us the web server.
 #
-require File.join(File.dirname(__FILE__), 'event_app')
+require File.join(File.dirname(__FILE__), '/event_app')
 require 'rack/test'
 
 module AppHelper
