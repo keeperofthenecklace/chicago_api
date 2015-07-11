@@ -1,11 +1,9 @@
-#################################################
-# Implementation of a simple token authentication
-# module. Token authentication was removed from
-# Devise a couple of years ago.
+#########################################################
+# Implementation of a simple token authentication module.
 # The token will be composed of two informations:
 # the user id followed by the token itself,
 # separated by a ':'
-#################################################
+########################################################
 class ApplicationController < ActionController::API
   include ActionController::Serialization
   include AbstractController::Translation
@@ -14,7 +12,6 @@ class ApplicationController < ActionController::API
 
   respond_to :json
 
-  ##
   # User Authentication
   # Authenticates the user with OAuth2 Resource Owner Password
   def authenticate_user_from_token!
@@ -39,7 +36,6 @@ class ApplicationController < ActionController::API
       user = User.where(id: user_id).first
 
       if user && Devise.secure_compare(user.access_token, auth_token)
-        # User can access
         sign_in user, store: false
       else
         authentication_error
@@ -48,10 +44,9 @@ class ApplicationController < ActionController::API
     end
 
     # Authentication Failure
-    # Renders http response code 401.
-    # A users token is invalid.
+    # A users token is invalid
     def authentication_error
-      render json: { error: t('unauthorized') }, status: 401 # Authentication time out
+      render json: { error: t('unauthorized') }, status: 401
     end
 
 end
