@@ -1,6 +1,5 @@
 == README
-This is a simple lightweight Rails::API project serving JSON resourcess data to a seperate node app "chicago_north".
-Chicago_north app (WIP), is a single page application built on Flux, React.js (view) and Angular.js (model & controller)
+This is a simple lightweight Rails::API project serving JSON resources to a seperate node app "chicago_north". Chicago_north app which is not include in my public repository (WIP), is a single page application built on Flux, React.js (view) and Angular.js (model & controller)
 
 The objective here is to slice what would be a monolithic Rails app into a lightweight backend serving API.
 
