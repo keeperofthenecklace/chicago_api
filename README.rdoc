@@ -10,25 +10,23 @@ Devise is used to authenticate the user in each request.
   $ bundle exec rake middleware
 
 == Seeding & Running the web application
-  $ bundle exec rake db:create:all
+  bundle exec rake db:create:all
 
-  $ bundle exec rake db:migrate
+  bundle exec rake db:migrate
 
-  $ bundle exec rake db:seed
-
-  $ bundle exec rake db:migrate db:test:prepare
+  bundle exec rake db:seed
 
 == Testing API with Cucumber, Rack-test & Sinatra
-  $ rackup
-  (starts sinatra on port=9292)
-
-$ rake cucumber:all
+From your terminal type:
+  rackup (starts sinatra on port=9292)
+  rake cucumber:all
 
 == Testing API with Curl
+From your terminal type:
   $ rails s -p 3002
   (starts WEBrick server on port=3002)
 
-  $  curl localhost:3002/v1/login --data "user[email]=test@test.com&user[username]=user&user[password]=password&user[password_confirmation]=password"
+  curl localhost:3002/v1/login --data "user[email]=test@test.com&user[username]=user&user[password]=password&user[password_confirmation]=password"
 
 You should have a JSON response similar to this:
   {
