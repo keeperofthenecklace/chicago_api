@@ -1,56 +1,41 @@
 == README
-This is a Rails::API project serving data up to a seperate node app with Flux and React.
-It is a simple Rails application (chicago_api) that serves JSON resources to an API client.
+This is a simple lightweight Rails::API project serving JSON resourcess data to a seperate node app "chicago_north".
+Chicago_north app (WIP), is a single page application built on Flux, React.js (view) and Angular.js (model & controller)
 
 The objective here is to slice what would be a monolithic Rails app into a lightweight backend serving API.
-Angular.js is fine to use but requires too much effort. React is getting a lot of good press, so why not use it.
 
-React is simple. On a high level it promotes events and data to be one directional day flow.
-React leverages the virtual DOM for high performance.
-React promotes componentized development.
-React a view layer helping the DOM to be more modular.
-
-All other JS frameworks are MVC so I won't compare them to React.
-React is used to build the frontend with flux architecture.
-
-Flux is a one directional data flow which lines up with React. (Also a one directional data flow)
-
-Since this an API, no session is involved
-I'm using Devise to authenticate the user in each request.
-
-Moving forward, I'll be using tools like React Native and Relay along with React.
+Devise is used to authenticate the user in each request.
 
 == Adding additional middleware
-$ bundle exec rake middleware
+  $ bundle exec rake middleware
 
 == Seeding & Running the web application
-$ bundle exec rake db:create:all
+  $ bundle exec rake db:create:all
 
-$ bundle exec rake db:migrate
+  $ bundle exec rake db:migrate
 
-$ bundle exec rake db:seed
+  $ bundle exec rake db:seed
 
-$ bundle exec rake db:migrate db:test:prepare
+  $ bundle exec rake db:migrate db:test:prepare
 
 == Testing API with Cucumber, Rack-test & Sinatra
-$ rackup
+  $ rackup
   (starts sinatra on port=9292)
 
 $ rake cucumber:all
 
 == Testing API with Curl
-$ rails s -p 3002
+  $ rails s -p 3002
   (starts WEBrick server on port=3002)
 
-$  curl localhost:3002/v1/login --data "user[email]=test@test.com&user[username]=user&user[password]=password&user[password_confirmation]=password"
+  $  curl localhost:3002/v1/login --data "user[email]=test@test.com&user[username]=user&user[password]=password&user[password_confirmation]=password"
 
 You should have a JSON response similar to this:
-
-{
-  "email":"test@test.com",
-  "token_type":"Love_Is_An_Adventure!",
-  "user_id":1,
-  "access_token":"1:JzuQ1sXoAPfM_zWpuhNB"
-}
+  {
+    "email":"test@test.com",
+    "token_type":"Love_Is_An_Adventure!",
+    "user_id":1,
+    "access_token":"1:JzuQ1sXoAPfM_zWpuhNB"
+  }
 
 
