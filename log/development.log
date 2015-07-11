@@ -553,3 +553,5 @@ Processing by V1::SessionsController#create as JSON
   Parameters: {"user"=>{"email"=>"test@test.com", "username"=>"user", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
   [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "test@test.com"]]
 Completed 200 OK in 120ms (Views: 2.3ms | ActiveRecord: 5.3ms)
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mEvent Load (0.6ms)[0m  SELECT "events".* FROM "events" WHERE "events"."user_id" = $1  [["user_id", 1]]

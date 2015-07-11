@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # Association
   has_many :events
 
+  # Validations
   validates :username, presence: true
   validates :email, presence: true
 
