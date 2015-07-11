@@ -1,6 +1,6 @@
 == README
 This is a Rails::API project serving data up to a seperate node app with Flux and React.
-It is a simple Rails application (chicago_api) that serves JSON resources to an API client, frontend (chicago_south - Not available in public repository).
+It is a simple Rails application (chicago_api) that serves JSON resources to an API client.
 
 The objective here is to slice what would be a monolithic Rails app into a lightweight backend serving API.
 Angular.js is fine to use but requires too much effort. React is getting a lot of good press, so why not use it.
