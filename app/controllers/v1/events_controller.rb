@@ -5,8 +5,8 @@ module V1
     # GET /v1/events
     # GET all events
     def index
-      @events = Event.includes(:user).order(created_at: :desc)
-      render json: @events, each_serializer: EventSerializer
+      @events = Event.includes(:user).order(created_at: :asc)
+      render json: @events, each_serializer: EventSerializer, meta: { total: Event.count }
     end
 
     def show
